@@ -66,6 +66,29 @@ function validateStep1() {
   return true;
 }
 
+// Function to toggle password visibility
+function togglePasswordVisibility(inputId, eyeIconId) {
+  const passwordInput = document.getElementById(inputId);
+  const eyeIcon = document.getElementById(eyeIconId);
+
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    eyeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19 12s-1.5 2-4 2-4-2-4-2-1.5-2-4-2-4 2-4 2" /></svg>';
+  } else {
+    passwordInput.type = 'password';
+    eyeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12s-1.5 2-4 2-4-2-4-2-1.5-2-4-2-4 2-4 2" /><circle cx="12" cy="12" r="3" /></svg>';
+  }
+}
+
+// Event listeners for toggling password visibility
+document.getElementById('eye-icon-password').addEventListener('click', function() {
+  togglePasswordVisibility('password', 'eye-icon-password');
+});
+
+document.getElementById('eye-icon-confirm-password').addEventListener('click', function() {
+  togglePasswordVisibility('confirm-password', 'eye-icon-confirm-password');
+});
+
 
 
 
