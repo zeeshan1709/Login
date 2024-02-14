@@ -27,6 +27,20 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .eye-icon svg {
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    color: #666; /* Adjust as needed */
+  }
+  
   .tick-icon {
     display: none;
     color: green;
