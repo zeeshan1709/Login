@@ -1,42 +1,84 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const registrationForm = document.getElementById("registration-form");
-    const personalDetailsForm = document.getElementById("personal-details-form");
-    const educationDetailsForm = document.getElementById("education-details-form");
-    const registerBtn = document.getElementById("register-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const submitBtn = document.getElementById("submit-btn");
-    const prevPersonalBtn = document.getElementById("prev-personal-btn");
-    const prevEducationBtn = document.getElementById("prev-education-btn");
-  
-   
-    registerBtn.addEventListener("click", function () {
-      
-      registrationForm.style.display = "none";
-      personalDetailsForm.style.display = "block";
-    });
-  
-    
-    nextBtn.addEventListener("click", function () {
-      personalDetailsForm.style.display = "none";
-      educationDetailsForm.style.display = "block";
-    });
-  
+let currentPage = 1;
+const progress = document.getElementById('progress');
 
-    prevPersonalBtn.addEventListener("click", function () {
-      personalDetailsForm.style.display = "none";
-      registrationForm.style.display = "block";
-    });
-  
-    
-    prevEducationBtn.addEventListener("click", function () {
-      educationDetailsForm.style.display = "none";
-      personalDetailsForm.style.display = "block";
-    });
-  
+function nextPage() {
+  if (currentPage === 1) {
+    if (!validateStep1()) {
+      return;
+    }
+  } else if (currentPage === 2) {
+    if (!validateStep2()) {
+      return;
+    }
+  }
 
-    submitBtn.addEventListener("click", function () {
-      educationDetailsForm.style.display = "none";
-      alert("Form submitted successfully!");
-    });
-  });
-  
+  currentPage++;
+  showPage(currentPage);
+  updateProgressBar();
+}
+
+function previousPage() {
+  currentPage--;
+  showPage(currentPage);
+  updateProgressBar();
+}
+
+function validateStep1() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+
+  if (!validateEmail(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  if (password.length < 8) {
+    alert('Password must be at least 8 characters long.');
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    alert('Password and confirm password do not match.');
+    return false;
+  }
+
+  return true;
+}
+
+function validateStep2() {
+  const fullname = document.getElementById('fullname').value;
+  const address = document.getElementById('address').value;
+  const mobile = document.getElementById('mobile').value;
+
+  if (fullname.trim() === '' || address.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields with valid information.');
+    return false;
+  }
+  return true;
+}
+
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+function showPage(pageNumber) {
+  for (let i = 1; i <= 3; i++) {
+    const page = document.getElementById(`page${i}`);
+    if (i === pageNumber) {
+      page.style.display = 'block';
+    } else {
+      page.style.display = 'none';
+    }
+  }
+}
+
+function updateProgressBar() {
+  const progressBarWidth = (currentPage - 1) * 50;
+  progress.style.width = `${progressBarWidth}%`;
+}
+
+function submitForm() {
+  alert('Form submitted successfully!');
+}
