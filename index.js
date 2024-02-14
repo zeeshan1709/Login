@@ -65,6 +65,16 @@ function validateStep1() {
   tickIcon.style.display = 'inline'; 
   return true;
 }
+function togglePasswordVisibility(inputId) {
+  const passwordInput = document.getElementById(inputId);
+
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+}
+
 
 
 function validateStep2() {
