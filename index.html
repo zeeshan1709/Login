@@ -3,77 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Page</title>
+  <title>Multi-step Form</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  
   <div class="container">
-    <!-- Registration Form -->
-    <form id="registration-form" class="form">
-      <h2>Registration</h2>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <div class="form-group">
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
-      </div>
-      <button id="register-btn" type="button">Register</button>
-    </form>
-
-    <!-- Personal Details Form -->
-    <form id="personal-details-form" class="form" style="display:none;">
-        <h2>Personal Details</h2>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-      <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required>
-      </div>
-      <div class="form-group">
-        <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
-        <small>Format: 10 digits only</small>
-      </div>
-      <button id="prev-personal-btn" type="button">Previous</button>
-      <button id="next-btn" type="button">Next</button>
-    </form>
-
-    <!-- Education Details Form -->
-    <form id="education-details-form" class="form" style="display:none;">
-      <h2>Education Details</h2>
-      <div class="form-group">
-        <label for="university">University</label>
-        <input type="text" id="university" name="university" required>
-      </div>
-      <div class="form-group">
-        <label for="degree">Degree</label>
-        <input type="text" id="degree" name="degree" required>
-      </div>
-      <div class="form-group">
-        <label for="percentage">Percentage</label>
-        <input type="number" id="percentage" name="percentage" min="0" max="100" required>
-      </div>
-      <button id="submit-btn" type="button">Submit</button>
-      <button id="prev-education-btn" type="button">Previous</button>
-    </form>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+    <div id="page1">
+      <h2>Registration - Step 1</h2>
+      <input type="email" id="email" placeholder="Enter your email"><br>
+      <input type="password" id="password" placeholder="Enter your password"><br>
+      <input type="password" id="confirm-password" placeholder="confirm-password"><br>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div id="page2" style="display: none;">
+      <h2>Personal Details - Step 2</h2>
+      <input type="text" id="fullname" placeholder="Enter your full name"><br>
+      <input type="text" id="address" placeholder="Enter your address"><br>
+      <input type="tel" id="mobile" name="mobile"placeholder="Mobile number" pattern="[0-9]{10}" required><br>
+      <button onclick="previousPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div id="page3" style="display: none;">
+      <h2>Education Details - Step 3</h2>
+      <input type="text" id="university" placeholder="Enter your university"><br>
+      <input type="text" id="college" placeholder="Enter your college"><br>
+      <input type="number" id="percentage" name="percentage" min="0" max="100" placeholder="Enter your percentage" required><br>
+      <button onclick="previousPage()">Previous</button>
+      <button onclick="submitForm()">Submit</button>
+    </div>
   </div>
+
   <script src="index.js"></script>
 </body>
 </html>
