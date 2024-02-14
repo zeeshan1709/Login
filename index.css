@@ -28,6 +28,26 @@ body {
     border-radius: 4px;
   }
 
+  .password-container {
+    position: relative;
+  }
+  
+  .password-container input[type="password"] {
+    padding-right: 35px; /* Adjust for the eye icon */
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 40px; /* Adjust for the padding */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  
+  
+  
+
   button {
     background-color: #4caf50;
     color: white;
