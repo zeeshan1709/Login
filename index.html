@@ -14,14 +14,22 @@
     <div id="page1">
       <h2>Registration - Step 1</h2>
       <input type="email" id="email" placeholder="Enter your email"><br>
-        <input type="password" id="password" placeholder="Enter your password"><br>
-        <input type="password" id="confirm-password" placeholder="confirm-password"><br>
-   
-        
-        <div id="tick-icon" class="tick-icon">&#10003;</div>
-      
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Enter your password">
+        <div class="eye-icon" onclick="togglePasswordVisibility('password')">
+          &#128065; <!-- Eye symbol -->
+        </div>
+      </div>
+      <div class="password-container">
+        <input type="password" id="confirm-password" placeholder="Confirm your password">
+        <div class="eye-icon" onclick="togglePasswordVisibility('confirm-password')">
+          &#128065; <!-- Eye symbol -->
+        </div>
+      </div>
+      <div id="tick-icon" class="tick-icon">&#10003;</div>
       <button onclick="nextPage()">Next</button>
     </div>
+    
     <div id="page2" style="display: none;">
       <h2>Personal Details - Step 2</h2>
       <input type="text" id="fullname" placeholder="Enter your full name"><br>
