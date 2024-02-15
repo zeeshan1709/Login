@@ -140,6 +140,6 @@ function submitForm() {
     alert('Please fill in all education details.');
     return; 
   }
-
+  alert('Form is successfully submitted!');
 }
 
