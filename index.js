@@ -105,11 +105,41 @@ function showPage(pageNumber) {
   }
 }
 
+const mobileInput = document.getElementById('mobile');
+
+
+mobileInput.addEventListener('blur', function(event) {
+  const mobileValue = event.target.value;
+
+ 
+  const numericMobileValue = mobileValue.replace(/\D/g, '');
+
+  if (mobileValue !== numericMobileValue) {
+    alert('Mobile number should contain numeric digits only.');
+    event.target.value = numericMobileValue; 
+  }
+
+  if (numericMobileValue.length !== 10) {
+    alert('Mobile number should be 10 digits.');
+  }
+});
+
+
 function updateProgressBar() {
   const progressBarWidth = (currentPage - 1) * 50;
   progress.style.width = `${progressBarWidth}%`;
 }
 
 function submitForm() {
-  alert('Form submitted successfully!');
+  const universityInput = document.getElementById('university');
+  const collegeInput = document.getElementById('college');
+  const percentageInput = document.getElementById('percentage');
+
+ 
+  if (universityInput.value.trim() === '' || collegeInput.value.trim() === '' || percentageInput.value.trim() === '') {
+    alert('Please fill in all education details.');
+    return; 
+  }
+
 }
+
